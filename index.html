@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hongos venenosos — referencia rápida</title>
+<style>
+  body{font-family:system-ui,Arial,sans-serif;margin:0;background:#0f172a;color:#e2e8f0}
+  header{padding:24px 16px;background:#111827}
+  h1{margin:0;font-size:24px}
+  .container{max-width:1100px;margin:0 auto;padding:16px}
+  .card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:16px;margin:12px 0}
+  input{width:100%;padding:10px;border-radius:10px;border:1px solid #374151;background:#0b1020;color:#e5e7eb}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:12px;border-bottom:1px solid #1f2937}
+  th{text-align:left;color:#93c5fd}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#1e293b;color:#93c5fd;font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Hongos venenosos — referencia rápida</h1></div></header>
+<div class="container">
+  <div class="card">
+    <input id="search" placeholder="Buscar por nombre científico, común, toxina o síndrome" />
+  </div>
+  <div class="card">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Nombre científico</th>
+          <th>Nombre común</th>
+          <th>Síndrome</th>
+          <th>Toxinas</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Amanita phalloides</td>
+          <td>oronja verde / death cap</td>
+          <td><span class="badge">hepatotóxico</span></td>
+          <td>α-amanitina, β-amanitina, falotoxinas</td>
+          <td>Latencia 6–24h, riesgo de fallo hepático</td>
+        </tr>
+        <tr>
+          <td>Amanita virosa</td>
+          <td>angel destructor</td>
+          <td><span class="badge">hepatotóxico</span></td>
+          <td>α-amanitina, β-amanitina</td>
+          <td>Fallo hepático fulminante</td>
+        </tr>
+        <tr>
+          <td>Galerina marginata</td>
+          <td>galerina de borde</td>
+          <td><span class="badge">hepatotóxico</span></td>
+          <td>α-amanitina, β-amanitina</td>
+          <td>En madera; confusión con comestibles</td>
+        </tr>
+        <tr>
+          <td>Cortinarius orellanus</td>
+          <td>cortinario de montaña</td>
+          <td><span class="badge">nefrótóxico</span></td>
+          <td>orellanina</td>
+          <td>Latencia 2–17 días</td>
+        </tr>
+        <tr>
+          <td>Gyromitra esculenta</td>
+          <td>falsa colmenilla</td>
+          <td><span class="badge">neurotóxico</span></td>
+          <td>gyromitrina</td>
+          <td>Tóxica cruda o mal preparada</td>
+        </tr>
+        <tr>
+          <td>Clitocybe dealbata</td>
+          <td>clitocybe blanco</td>
+          <td><span class="badge">colinérgico</span></td>
+          <td>muscarina</td>
+          <td>Síndrome muscarínico</td>
+        </tr>
+        <tr>
+          <td>Inocybe spp.</td>
+          <td>inocybe</td>
+          <td><span class="badge">colinérgico</span></td>
+          <td>muscarina</td>
+          <td>Numerosas especies</td>
+        </tr>
+        <tr>
+          <td>Amanita muscaria</td>
+          <td>matamoscas</td>
+          <td><span class="badge">neurotóxico</span></td>
+          <td>muscimol, ácido iboténico</td>
+          <td>Efectos neurológicos</td>
+        </tr>
+        <tr>
+          <td>Amanita pantherina</td>
+          <td>amanita pantera</td>
+          <td><span class="badge">neurotóxico</span></td>
+          <td>muscimol, ácido iboténico</td>
+          <td>Similar a A. muscaria</td>
+        </tr>
+        <tr>
+          <td>Omphalotus olearius</td>
+          <td>seta de olivo</td>
+          <td><span class="badge">gastrointestinal</span></td>
+          <td>illudina S</td>
+          <td>Bioluminiscente; confusión con Cantharellus</td>
+        </tr>
+        <tr>
+          <td>Chlorophyllum molybdites</td>
+          <td>parasol verde</td>
+          <td><span class="badge">gastrointestinal</span></td>
+          <td>irritantes GI</td>
+          <td>Gastroenteritis severa</td>
+        </tr>
+        <tr>
+          <td>Lepiota brunneoincarnata</td>
+          <td>lepiota mortal</td>
+          <td><span class="badge">hepatotóxico</span></td>
+          <td>α-amanitina, β-amanitina</td>
+          <td>Amatoxinas potentes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  const input = document.getElementById('search');
+  const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    rows.forEach(tr => {
+      const txt = tr.innerText.toLowerCase();
+      tr.style.display = txt.includes(q) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
